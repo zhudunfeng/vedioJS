@@ -629,7 +629,7 @@ QUnit.test('should add a touch-enabled classname when touch is supported', funct
   // Fake touch support. Real touch support isn't needed for this test.
   const origTouch = browser.TOUCH_ENABLED;
 
-  browser.TOUCH_ENABLED = true;
+  browser.override({TOUCH_ENABLED: true});
 
   const player = TestHelpers.makePlayer({});
 
@@ -651,7 +651,7 @@ QUnit.test('should not add a touch-enabled classname when touch is not supported
 
   assert.equal(player.el().className.indexOf('vjs-touch-enabled'), -1, 'touch-enabled classname not added');
 
-  browser.TOUCH_ENABLED = origTouch;
+  browser.override({TOUCH_ENABLED: origTouch});
   player.dispose();
 });
 
