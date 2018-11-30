@@ -14,7 +14,7 @@ module.exports = function(config) {
     serverBrowsers(defaults) {
       return [];
     },
-    coverage: reportCoverage,
+    coverage: reportCoverage
   };
 
   config = generate(config, options);
@@ -29,34 +29,20 @@ module.exports = function(config) {
   });
 
   config.files = [
+    'node_modules/es5-shim/es5-shim.js',
+    'node_modules/es6-shim/es6-shim.js',
+    'node_modules/sinon/pkg/sinon.js',
     'dist/video-js.css',
-    'test/globals-shim.js',
-    'test/unit/**/*.js',
+    'test/dist/bundle.js',
     'test/dist/browserify.js',
-    'test/dist/webpack.js',
-    {pattern: 'src/**/*.js', watched: true, included: false, served: false }
+    'test/dist/webpack.js'
   ];
 
   config.browserStack.project = 'Video.js';
 
-  config.frameworks.push('browserify');
-  config.browserify = {
-    debug: true,
-    plugin: [],
-    transform: [
-      ['babelify', {"presets": [["@babel/preset-env", {"loose": true}]]}],
-    ]
-  };
-
   if (reportCoverage) {
     config.browserify.transform.push('browserify-istanbul');
   }
-
-
-  config.preprocessors = {
-    'test/globals-shim.js': ['browserify'],
-    'test/unit/**/*.js': ['browserify'],
-  };
 
   // pin Browserstack Firefox version to 64
   config.customLaunchers.bsFirefox.browser_version = '64.0';
