@@ -80,7 +80,6 @@ const externals = {
     'global/document',
     'global/window',
     'xhr',
-    'tsml',
     'safe-json-parse/tuple',
     'videojs-vtt.js',
     'url-toolkit',
