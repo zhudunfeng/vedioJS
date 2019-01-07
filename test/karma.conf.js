@@ -40,10 +40,6 @@ module.exports = function(config) {
 
   config.browserStack.project = 'Video.js';
 
-  if (reportCoverage) {
-    config.browserify.transform.push('browserify-istanbul');
-  }
-
   // pin Browserstack Firefox version to 64
   config.customLaunchers.bsFirefox.browser_version = '64.0';
 
