@@ -59,7 +59,9 @@ module.exports = function(config) {
   };
 
   // pin Browserstack Firefox version to 64
+  /* eslint-disable camelcase */
   config.customLaunchers.bsFirefox.browser_version = '64.0';
+  /* eslint-enable camelcase */
 
   // uncomment the section below to re-enable all browserstack video recording
   // it is off by default because it slows the build
@@ -70,4 +72,9 @@ module.exports = function(config) {
     }
   });
   */
+
+  /* eslint-disable no-console */
+  console.log(JSON.stringify(config, null, 2));
+  /* eslint-enable no-console */
+
 };
